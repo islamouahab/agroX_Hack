@@ -1,8 +1,6 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-import os,sys
-sys.path.append("F:\ArgoX-Hackathon\model")
-from backend import AgroX_Intelligence
+from api.model.backend import AgroX_Intelligence
 from .services import search_plants_service
 
 
