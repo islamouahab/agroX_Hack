@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import {BACKEND_URL} from './backend'
 import Header from './component/Header';
 import Footer from './component/Footer';
 import HeroSection from './component/HeroSection';
@@ -145,7 +146,7 @@ const App = () => {
       // 2. If no cache, fetch from API
       try {
         console.log("🌐 Cache miss. Fetching from API...");
-        const response = await fetch('http://127.0.0.1:8000/api/ranks/'); 
+        const response = await fetch(`ranks`); 
         const data = await response.json();
         
         if (Array.isArray(data)) {
@@ -181,8 +182,8 @@ const App = () => {
 
     const isSingle = activeTab === 'single';
     const endpoint = isSingle 
-      ? 'http://127.0.0.1:8000/api/predict-single/' 
-      : 'http://127.0.0.1:8000/api/predict/';
+      ? `${BACKEND_URL}/predict-single/` 
+      : `${BACKEND_URL}/predict/`;
 
     const payload = isSingle 
       ? { plant: plantA } 

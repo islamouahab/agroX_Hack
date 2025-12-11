@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Loader2, Search, FlaskConical, Sprout, Check } from 'lucide-react';
+import {BACKEND_URL} from '../backend'
 
 // --- AUTOCOMPLETE COMPONENT ---
 const AutocompleteInput = ({ label, placeholder, value, onChange, onGenusSelect }) => {
@@ -33,7 +34,7 @@ const AutocompleteInput = ({ label, placeholder, value, onChange, onGenusSelect 
       if (showSuggestions) {
         setIsSearching(true);
         try {
-          const response = await fetch('http://127.0.0.1:8000/api/search-plants/', {
+          const response = await fetch(`${BACKEND_URL}/search-plants/`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ query: value })
